@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css?family=Material+Icons+Outlined");
+@import '../style/colors.css';
+
+.search-input{
+    border: 1px solid var(--placeholder-color);
+    border-radius: 1em;
+    max-width: 600px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+.search-input input{
+    border: none;
+    outline: none;
+    color: var(--font-color);
+    font-size: 1em;
+    width: 100%;
+}
+
+.search-input input::placeholder{
+    color: var(--placeholder-color);
+}
+
+.search-input__icon{
+    color: var(--placeholder-color);
+    margin: 0 10px 0 0;
+}
+
+.search-input__icon--text{
+    color: var(--font-color);
+}
