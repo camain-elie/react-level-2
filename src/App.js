@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import SearchInput from './components/searchInput/searchInput';
 import GithubElement from './components/githubElement/githubElement';
-import ResultList from './components/resultsList/resultList';
+import ResultList from './components/resultList/resultList';
 import { searchUser } from './services/github';
 
 import './App.css';
@@ -15,9 +15,14 @@ function App() {
     const [userMessage, setUserMessage] = useState('');
 
     const getInputValue = (value) => {
+
         if(value){
             searchUser(value)
                 .then(res => {
+
+
+
+                    console.log(res);
                     console.log('res');
                     setDataArray(res.items);
                     setNumberOfItems(res.total_count);
@@ -27,19 +32,20 @@ function App() {
                         setUserMessage('');
                     }
                 })
-                .catch(error => {
+                .catch(() => {
                     console.log('error');
-                    setUserMessage(error.message);
-                    console.log(error.state);
+                    
+                    setUserMessage('error');
                 });
         }else{
             setDataArray([]);
+            setUserMessage("Enter the user's name you are looking for above.");
             setNumberOfItems(0);
         }
         
     };
 
-    console.log(numberOfItems);
+
 
     return (
         <div className="App">
@@ -47,6 +53,7 @@ function App() {
             <SearchInput 
                 getInputValue={getInputValue}
                 searchIcon="search"
+                n={numberOfItems}
             />
 
             <ResultList 

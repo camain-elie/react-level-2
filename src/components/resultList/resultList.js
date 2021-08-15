@@ -31,7 +31,7 @@ export default function ResultList ({ dataArray, Component, userMessage }) {
 }
 
 ResultList.propTypes = {
-    dataArray: PropTypes.arrayOf(PropTypes.any).isRequired,
+    dataArray: PropTypes.arrayOf(PropTypes.any),
     Component: PropTypes.elementType.isRequired,
     userMessage: PropTypes.string,
 };

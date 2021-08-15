@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import './searchInput.css';
@@ -7,10 +7,14 @@ export default function SearchInput ({ getInputValue, searchIcon }) {
     
     const [value, setValue] = useState('');
 
-    const handleOnChange = (e) => {
-        setValue(e.target.value);
-        getInputValue(e.target.value);
-    };
+    useEffect(() => {
+        const delay = setTimeout(() => {
+            getInputValue(value);
+        }, 10);
+    
+        return () => clearTimeout(delay);
+    }, [value]);
+
 
     return(
         <div className="search-input">
@@ -20,7 +24,7 @@ export default function SearchInput ({ getInputValue, searchIcon }) {
             <input
                 type="text"
                 value={value}
-                onChange={e => handleOnChange(e)}
+                onChange={(e) => setValue(e.target.value)}
                 placeholder="Search a user"    
             />
         </div>
