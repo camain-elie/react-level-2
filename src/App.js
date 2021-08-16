@@ -20,8 +20,9 @@ function App() {
             searchUser(value)
                 .then(res => {
 
-
-
+                    if(res.statusText === "Forbidden"){
+                        setUserMessage('oops');
+                    }
                     console.log(res);
                     console.log('res');
                     setDataArray(res.items);
@@ -32,14 +33,14 @@ function App() {
                         setUserMessage('');
                     }
                 })
-                .catch(() => {
-                    console.log('error');
+                .catch(error => {
+                    console.log(error.message);
                     
-                    setUserMessage('error');
+                    setUserMessage(error.message);
                 });
         }else{
             setDataArray([]);
-            setUserMessage("Enter the user's name you are looking for above.");
+            setUserMessage("Enter the user's name you are looking for in the field above.");
             setNumberOfItems(0);
         }
         

@@ -10,7 +10,7 @@ export default function SearchInput ({ getInputValue, searchIcon }) {
     useEffect(() => {
         const delay = setTimeout(() => {
             getInputValue(value);
-        }, 10);
+        }, 1000);
     
         return () => clearTimeout(delay);
     }, [value]);
