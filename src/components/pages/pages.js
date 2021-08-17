@@ -2,78 +2,86 @@ import PropTypes from 'prop-types';
 
 import './pages.css';
 
-function Pages(props){
+export default function Pages ({ totalPages, currentPage, changeOnePage, changeToPage }) {
 
-    if(props.totalPages < 2){
-        return null;
-    }
+    console.log({totalPages: totalPages, currentPage: currentPage});
 
-    const pageMin = 1;
-    const pageMax = props.totalPages;
-    let currentPage = props.currentPage;
-    if(currentPage > pageMax){
-        currentPage = pageMax;
-    }
-    if(currentPage<1){
-        currentPage = 1;
-    }
-    let buttonTab = [];
+    const generatePagesButtons = () => {
 
-    for(let i = 1; i<=pageMax; i++){
-        if((i===pageMin) || (i===pageMax) || (i >= currentPage-1 && i<= currentPage+1)){
-            buttonTab.push(i);
-        }else{
-            if((i===currentPage-2) || (i===currentPage+2)){
-                buttonTab.push("...");
+        let buttonTab = [];
+
+        const pageMin = 1, pageMax = totalPages;
+
+        
+        // fill buttonTab with strings contained in the buttons
+        for(let i = 1; i<=pageMax; i++){
+            if((i===pageMin) || (i===pageMax) || (i >= currentPage-1 && i<= currentPage+1)){
+                buttonTab.push(i);
+            }else{
+                if((i===currentPage-2) || (i===currentPage+2)){
+                    buttonTab.push("...");
+                }
             }
         }
-    }
 
-    return(
-        <div className="pages">
-
-            <div className={`pages__arrow${currentPage === pageMin ? "--disabled" : ""}`}
-                onClick={() => props.changeOnePage(-1)} >
-                <p className="material-icons">
-                    chevron_left
-                </p>
-            </div>  
-
-            {buttonTab.map((item, index) => {
-                if(item === "..."){
-                    return(
-                        <div className="pages__more" key={index} >
-                            <p>{item}</p>
-                        </div>
-                    );
-                }
-
+        // generate array with the buttons from buttonButton
+        let pagesArray = buttonTab.map((item, index) => {
+            if(item === "..."){
                 return(
-                    <div className={`pages__number ${item === currentPage ? "pages__number--current" : ""}`}
-                        key={index}
-                        onClick={() => props.changeToPage(item)}
-                    >
+                    <div className="pages__more" key={index+1} >
                         <p>{item}</p>
                     </div>
                 );
-            })}
+            }
 
+            return(
+                <div className={`pages__number ${item === currentPage ? "pages__number--current" : ""}`}
+                    key={index+1}
+                    onClick={() => changeToPage(item)}
+                >
+                    <p>{item}</p>
+                </div>
+            );
+        });
+
+        const leftArrow = (
+            <div className={`pages__arrow${currentPage === pageMin ? "--disabled" : ""}`}
+                onClick={() => changeOnePage(-1)} 
+                key={0}    
+            >
+                <p className="material-icons">
+                    chevron_left
+                </p>
+            </div>
+        );
+        const rightArrow = (
             <div className={`pages__arrow${currentPage === pageMax ? "--disabled" : ""}`}
-                onClick={() => props.changeOnePage(1)} >
+                onClick={() => changeOnePage(1)}
+                key={pagesArray.length+1} >
                 <p className="material-icons">
                     chevron_right
                 </p>
-            </div>     
+            </div>
+        );
+
+        // finally we add the left and right arrow buttons to pagesArray
+        pagesArray.unshift(leftArrow);
+        pagesArray.push(rightArrow);
+
+        return pagesArray;
+    };
+
+    //if less than two pages, no need for pages
+    if(totalPages < 2) return null; 
+
+    const pages = generatePagesButtons();
+
+    return(
+        <div className="pages" >
+            {pages}
         </div>
     );
 }
-
-Pages.defaultProps = {
-    totalPages: 0,
-    currentPage: 0,
-    changeOnePage: (value) => console.log('page ' + value),
-    changeToPage: (value) => console.log('change to page ' + value),
-};
 
 Pages.propTypes = {
     totalPages: function(props, propName, componentName){
@@ -89,7 +97,7 @@ Pages.propTypes = {
                 propName + "' must be of type 'Number'."
             );
         }
-    } ,
+    },
     currentPage: function(props, propName, componentName){
         if(typeof props[propName] != 'number'){
             return new Error(
@@ -108,5 +116,3 @@ Pages.propTypes = {
     changeOnePage: PropTypes.func.isRequired,
     changeToPage: PropTypes.func.isRequired,
 };
-
-export default Pages;
