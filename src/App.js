@@ -14,24 +14,32 @@ const NO_RESULT = 'Sorry, we were unable to find any user with this username, tr
     with 30 result per page */
 const PAGE_MAX = 34;
 
+/**
+ * The following - Github user search - application.
+ * When the user 
+ * 
+ */
 function App() {
-    const [dataArray, setDataArray] = useState([]);
     const [searchValue, setSearchValue] = useState('');
+    const [dataArray, setDataArray] = useState([]);
     const [numberOfItems, setNumberOfItems] = useState(0);
     const [userMessage, setUserMessage] = useState('');
     const [currentPage, setCurrentPages] = useState(1);
 
-    const sendUserSearch = (value, page = 1) => {
+    const sendUserSearch = (value, page) => {
         if(value){
             searchUser(value, page)
                 .then(res => {
-                    console.log(res);
-                    if(!currentPage){
+
+                    /* set currentPage to 1 if it's an API call
+                        because of a change of searchValue */
+                    if(!page){
                         setCurrentPages(1);
                     }
                     
                     setDataArray(res.items);
                     setNumberOfItems(res.total_count);
+
                     if(!res.total_count){
                         setUserMessage(NO_RESULT);
                     }else{
@@ -39,8 +47,7 @@ function App() {
                     }
                 })
                 .catch(error => {
-                    console.log(error.message);
-                    
+                    console.error(error.message);
                     setUserMessage(error.message);
                 });
         }else{
@@ -51,9 +58,12 @@ function App() {
     };
 
     useEffect(() => {
+        sendUserSearch(searchValue);
+    }, [searchValue]);
+
+    useEffect(() => {
         sendUserSearch(searchValue, currentPage);
-        
-    }, [searchValue, currentPage]);
+    }, [currentPage]);
 
     const changeOnePage = (page) => {
         setCurrentPages(currentPage + page);

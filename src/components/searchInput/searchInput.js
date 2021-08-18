@@ -7,6 +7,10 @@ export default function SearchInput ({ getInputValue, searchIcon }) {
     
     const [value, setValue] = useState('');
 
+    /* The value is updated only one second
+        after the user stops to type to prevent
+        updates to the parent component and therefore
+        too many API calls */
     useEffect(() => {
         const delay = setTimeout(() => {
             getInputValue(value);

@@ -2,18 +2,20 @@ import PropTypes from 'prop-types';
 
 import './pages.css';
 
+/**
+ * Pages component generates a list of button to let the user change and display
+ * the pages of a multi pages list of results.
+ * The logic of the component is mostly handled by the parent component and passed
+ * through the props.
+ */
 export default function Pages ({ totalPages, currentPage, changeOnePage, changeToPage }) {
-
-    console.log({totalPages: totalPages, currentPage: currentPage});
 
     const generatePagesButtons = () => {
 
         let buttonTab = [];
-
         const pageMin = 1, pageMax = totalPages;
-
         
-        // fill buttonTab with strings contained in the buttons
+        // fill buttonTab with strings that will be contained in the buttons
         for(let i = 1; i<=pageMax; i++){
             if((i===pageMin) || (i===pageMax) || (i >= currentPage-1 && i<= currentPage+1)){
                 buttonTab.push(i);
@@ -44,6 +46,7 @@ export default function Pages ({ totalPages, currentPage, changeOnePage, changeT
             );
         });
 
+        // finally we add the left and right arrow buttons to pagesArray
         const leftArrow = (
             <div className={`pages__arrow${currentPage === pageMin ? "--disabled" : ""}`}
                 onClick={() => changeOnePage(-1)} 
@@ -64,7 +67,6 @@ export default function Pages ({ totalPages, currentPage, changeOnePage, changeT
             </div>
         );
 
-        // finally we add the left and right arrow buttons to pagesArray
         pagesArray.unshift(leftArrow);
         pagesArray.push(rightArrow);
 

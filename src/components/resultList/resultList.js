@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import './resultList.css';
 
+// Generate an array of given Components from an array of data 
 const generateList = (dataArray, Component) => {
 
     return dataArray.map(item => {
@@ -13,6 +14,11 @@ const generateList = (dataArray, Component) => {
     });
 };
 
+
+/**
+ * Create a list of a given Component from an array of data or
+ * display a message instead if necessary.
+ */
 export default function ResultList ({ dataArray, Component, userMessage }) {
 
     let itemList;

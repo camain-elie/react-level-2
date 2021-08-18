@@ -2,6 +2,10 @@ import PropTypes from 'prop-types';
 
 import './githubElement.css';
 
+/** 
+ * GithubElement component build a card type component 
+ * displaying a github user's information. 
+*/
 export default function GithubElement ({ dataItem }) {
 
     const {login, avatar_url, html_url, score} = dataItem;
