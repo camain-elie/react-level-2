@@ -34,44 +34,52 @@
 
 ![screenshot](./public/project-overview.png)
 
-My solution to devchallenge.io's Github Jobs challenge.
+This project was made to complete a frontend technical test for a job application.
 
-Because the github job API is not listing any job and will soon be shut down, I decided to go for another API. I looked into Indeed, Monster and some other job services's APIs but all of them recquire some kind of permission or authentification to be used as a dev so I looked into another kind of API.
+### Instructions
+Create an input text in which as the user types in, launch a search against Github users and return a result list.
 
-Finally, I settled for the Open Brewery DB API. It suits the need of this challenge, instead of jobs, you can look for a brewery and all of the user stories are still fulfilled !
+### The subject
 
-The API has its limits, it contains mostly breweries from the US and the UK, so you won't find breweries from the rest of the world, sorry...
+- Query against Github Api: GET https://api.github.com/search/users?q={USER}.
+- Try to not add any dependency library on a freshly created create react app.
+- Don't forget to check against modern ways to make HTTP requests on frontend side.
+- Bonus: manage edge cases (no results, github api rate limit)
 
-There are more than 7900 breweries listed by the API, in order to limit the number of pages of results, I limited the result list to only 50 results, which seems enough.
+### Guidelines
 
-I learned a lot about React overall, about some javascript specificities and about API fetching ! I also got more comfortable with testing and file organization.
+- Use React.js to render the view
+- Push your code to a Github repository
+- Document what you've done
+
 
 ### Built With
 
-<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
+As asked in the guidelines, I did not use any dependency librairy. Therefore no css preprocessor or fetch library (like axios) where used, only React and Create-React-App.
 
 - [React](https://reactjs.org/)
 - [Create-React-App](https://create-react-app.dev/)
-- [Sass](https://sass-lang.com/)
 
 ## Features
 
-<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
+You can find the source code of the application in the /src folder.
 
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/TtUjDt19eIHxNQ4n5jps) was to build an application to complete the given user stories.
+Create an input text in which as the user types in, launch a search against Github users and return a result list.
+    --> Done, to increase the number of result shown to the user, a page system (adapted from a previous project) was added; 
 
-User stories :
-Note : As the API provide totally different data from the one provided by any job API, I adapted the user stories to the API I used, but the functionalities are still approximatively the same or sometimes even harder to develop.
-- I can see a list of jobs in a city by default.
-- ✔ I can search for jobs with a given keyword => with the complete or partial name of the brewery.
-- ✔ I can search for jobs with a city name, zip code, or other location => only with a city, because the API is less flexible about the location requests than the github job API
-- ✔ I can select one option from at least 4 pre-defined options.
-- ✔ I can search for a full-time job only => I replace that by the type of the brewery.
-- ✔ I can see a list of jobs with their logo, company name, location, and posted time. => the API did not provide any image, other than that, it is done. The posted time has been replaced by the last time the data has been updated.
-- ✔ When I select a job, I can see job descriptions and how to apply like the given design. => a bit too specific for the breweries API but I replaced thae "how to apply" section by the contact details of the brewery.
-- ✔ When I am on the job details page, I can go back to the search page.
-- ✔ (optional) I can see a list of jobs in the closest city from my location by default => not by default but you can click on the position button to set your position !
-- ✔ (optional) I can see jobs on different pages, 5 items on each page.
+1. Query against Github Api: GET https://api.github.com/search/users?q={USER}.
+    --> To make request to the Github API, I used the fetch() function with promises in a seperate file /services/github.js.
+
+2. Try to not add any dependency library on a freshly created
+   [create react app](https://github.com/facebook/create-react-app).
+    --> Only a few developpement dependencies.
+
+3. Don't forget to check against modern ways to make HTTP requests on frontend side.
+    --> 
+
+4. Bonus: manage edge cases (no results, github api rate limit)
+    --> The user gets a message when an error occurs, no results are found or the api rate limit is reached.
+    Moreover, to reduce the impact of the api rate limit, a call to the API is send only when the user stops typing for more than one second (instead of every time a key is pressed).
 
 ## How To Use
 
@@ -81,7 +89,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/camain-elie/brews-app
+$ git clone https://github.com/camain-elie/react-level-2
 
 # Install dependencies
 $ npm install
@@ -96,7 +104,7 @@ $ npm start
 
 - [Stackoverflow - a few answers helped me a lot as usual](https://stackoverflow.com/)
 - [React.js](https://fr.reactjs.org/)
-- [Open Brewery DB](https://www.openbrewerydb.org/)
+- [Github API](https://docs.github.com/en/rest/reference/search#search-users)
 
 ## Contact
 
