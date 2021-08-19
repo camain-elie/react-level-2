@@ -1,0 +1,12 @@
+@import '../style/colors.css';
+
+.result-list{
+    margin: 40px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.result-list__message{
+    color: var(--font-color);
+}

@@ -49,6 +49,7 @@ function App() {
                 .catch(error => {
                     console.error(error.message);
                     setUserMessage(error.message);
+                    setNumberOfItems(0);
                 });
         }else{
             setDataArray([]);

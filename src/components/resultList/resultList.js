@@ -24,13 +24,13 @@ export default function ResultList ({ dataArray, Component, userMessage }) {
     let itemList;
 
     if(userMessage){
-        itemList = <div>{userMessage}</div>;
+        itemList = <div className="result-list__message">{userMessage}</div>;
     }else{
         itemList = generateList(dataArray, Component);
     }
 
     return(
-        <div>
+        <div className="result-list">
             {itemList}
         </div>
     );

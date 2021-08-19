@@ -1,70 +1,103 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">react-level-2 - Github-user-search</h1>
 
-## Available Scripts
+<div align="center">
+   Solution for Technical test</a>.
+</div>
 
-In the project directory, you can run:
+<div align="center">
+  <h3>
+    <a href="https://camain-elie.github.io/react-level-2/">
+      Demo
+    </a>
+    <span> | </span>
+    <a href="https://github.com/camain-elie/react-level-2">
+      Solution
+    </a>
+  </h3>
+</div>
 
-### `npm start`
+<!-- TABLE OF CONTENTS -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Table of Contents
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [Overview](#overview)
+  - [Built With](#built-with)
+- [Features](#features)
+- [How to use](#how-to-use)
+- [Contact](#contact)
+- [Acknowledgements](#acknowledgements)
 
-### `npm test`
+<!-- OVERVIEW -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Overview
 
-### `npm run build`
+![screenshot](./public/project-overview.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+My solution to devchallenge.io's Github Jobs challenge.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Because the github job API is not listing any job and will soon be shut down, I decided to go for another API. I looked into Indeed, Monster and some other job services's APIs but all of them recquire some kind of permission or authentification to be used as a dev so I looked into another kind of API.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Finally, I settled for the Open Brewery DB API. It suits the need of this challenge, instead of jobs, you can look for a brewery and all of the user stories are still fulfilled !
 
-### `npm run eject`
+The API has its limits, it contains mostly breweries from the US and the UK, so you won't find breweries from the rest of the world, sorry...
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+There are more than 7900 breweries listed by the API, in order to limit the number of pages of results, I limited the result list to only 50 results, which seems enough.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I learned a lot about React overall, about some javascript specificities and about API fetching ! I also got more comfortable with testing and file organization.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Built With
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
-## Learn More
+- [React](https://reactjs.org/)
+- [Create-React-App](https://create-react-app.dev/)
+- [Sass](https://sass-lang.com/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
-### Code Splitting
+This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/TtUjDt19eIHxNQ4n5jps) was to build an application to complete the given user stories.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+User stories :
+Note : As the API provide totally different data from the one provided by any job API, I adapted the user stories to the API I used, but the functionalities are still approximatively the same or sometimes even harder to develop.
+- I can see a list of jobs in a city by default.
+- ✔ I can search for jobs with a given keyword => with the complete or partial name of the brewery.
+- ✔ I can search for jobs with a city name, zip code, or other location => only with a city, because the API is less flexible about the location requests than the github job API
+- ✔ I can select one option from at least 4 pre-defined options.
+- ✔ I can search for a full-time job only => I replace that by the type of the brewery.
+- ✔ I can see a list of jobs with their logo, company name, location, and posted time. => the API did not provide any image, other than that, it is done. The posted time has been replaced by the last time the data has been updated.
+- ✔ When I select a job, I can see job descriptions and how to apply like the given design. => a bit too specific for the breweries API but I replaced thae "how to apply" section by the contact details of the brewery.
+- ✔ When I am on the job details page, I can go back to the search page.
+- ✔ (optional) I can see a list of jobs in the closest city from my location by default => not by default but you can click on the position button to set your position !
+- ✔ (optional) I can see jobs on different pages, 5 items on each page.
 
-### Analyzing the Bundle Size
+## How To Use
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<!-- Example: -->
 
-### Making a Progressive Web App
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+# Clone this repository
+$ git clone https://github.com/camain-elie/brews-app
 
-### Advanced Configuration
+# Install dependencies
+$ npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Run the app
+$ npm start
+```
 
-### Deployment
+## Acknowledgements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
 
-### `npm run build` fails to minify
+- [Stackoverflow - a few answers helped me a lot as usual](https://stackoverflow.com/)
+- [React.js](https://fr.reactjs.org/)
+- [Open Brewery DB](https://www.openbrewerydb.org/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+
+- GitHub [@camain-elie](https://github.com/camain-elie)

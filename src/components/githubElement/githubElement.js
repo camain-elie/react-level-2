@@ -19,7 +19,8 @@ export default function GithubElement ({ dataItem }) {
 
             <div className="github-element__info">
                 <p>
-                    <a
+                    <a 
+                        className="github-element__login"
                         href={html_url}
                         target="_blank"
                         rel="noreferrer"
@@ -29,6 +30,7 @@ export default function GithubElement ({ dataItem }) {
                 </p>
                 <p>
                     <a
+                        className="github-element__repositeries"
                         href={`${html_url}?tab=repositories`}
                         target="_blank"
                         rel="noreferrer"
