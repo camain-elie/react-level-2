@@ -65,7 +65,8 @@ As asked in the guidelines, I did not use any dependency librairy. Therefore no 
 You can find the source code of the application in the /src folder.
 
 Create an input text in which as the user types in, launch a search against Github users and return a result list.
-    --> Done, to increase the number of result shown to the user, a page system (adapted from a previous project) was added; 
+    --> Done, to increase the number of result shown to the user, a page system (adapted from a previous project) was added.
+      The results are presented as cards containing a link to the user's profile, a link to the user's repositeries, the user's score and profile image. 
 
 1. Query against Github Api: GET https://api.github.com/search/users?q={USER}.
     --> To make request to the Github API, I used the fetch() function with promises in a seperate file /services/github.js.
