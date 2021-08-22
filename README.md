@@ -2,7 +2,7 @@
 <h1 align="center">react-level-2 - Github-user-search</h1>
 
 <div align="center">
-   Solution for Technical test</a>.
+   Solution for a Technical test</a>.
 </div>
 
 <div align="center">
