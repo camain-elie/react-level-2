@@ -22,6 +22,9 @@
 ## Table of Contents
 
 - [Overview](#overview)
+  - [Instructions](#instructions)
+  - [The Subject](#the-subject)
+  - [Guidelines](#guidelines)
   - [Built With](#built-with)
 - [Features](#features)
 - [How to use](#how-to-use)
@@ -69,14 +72,14 @@ Create an input text in which as the user types in, launch a search against Gith
       The results are presented as cards containing a link to the user's profile, a link to the user's repositeries, the user's score and profile image. 
 
 1. Query against Github Api: GET https://api.github.com/search/users?q={USER}.
-    --> To make request to the Github API, I used the fetch() function with promises in a seperate file /services/github.js.
+    --> Done.
 
 2. Try to not add any dependency library on a freshly created
    [create react app](https://github.com/facebook/create-react-app).
     --> Only a few developpement dependencies.
 
 3. Don't forget to check against modern ways to make HTTP requests on frontend side.
-    --> 
+    --> To make request to the Github API, I used the fetch() function with promises in a seperate file /services/github.js.
 
 4. Bonus: manage edge cases (no results, github api rate limit)
     --> The user gets a message when an error occurs, no results are found or the api rate limit is reached.
